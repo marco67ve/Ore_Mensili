@@ -1,0 +1,196 @@
+
+ Cos'ä OM.EXE
+ ------------
+ Un programma per creare e modificare fogli orari mensili con due ingressi e
+ due uscite al giorno.
+
+ Requisiti di sistema
+ --------------------
+ DOS Microsoft/IBM
+ PC XT/AT IBM compatibile
+
+ Come funziona
+ -------------
+ Il programma va posto in una directory di path per essere chiamato da quella
+ contenente i propri file.
+ Per ogni foglio viene creato un file .CSV per le eventuali modifiche e un file
+ di testo .TXT da visualizzare e stampare premendo i tasti [V] e [S];
+
+ per visualizzare il file, p.e. 1988-01.TXT, da prompt immettere:
+
+    type 1988-01.TXT | more
+
+ e per stamparlo da prompt, immettere:
+
+    type 1988-01.TXT > lpt1: oppure copy 1988-01.TXT lpt1:
+
+ il testo viene centrato orizzontalmente a video e per stampante a 80 colonne e
+ 60 righe, ossia dalla decima colonna e dalla decima riga, pertanto, se il file
+ sarÖ aperto con un elaboratore di testi (p.e. per evidenziare giorni
+ particolari), occorrerÖ impostare i margini pagina correttamente.
+
+ Nota: l'inserimento dei dati (nomi, orari, ecc.) ä gestito da un editor
+ interno che ne garantisce la correttezza per tipologia e lunghezza.
+
+ Creare un foglio nuovo
+ ----------------------
+ Premendo il tasto [N] (nuovo) il programma chiederÖ di inserire:
+
+ - il proprio nome o numero di matricola; questo sarÖ aggiunto, senon presente,
+ in una lista (NOMI.OM) utile per i fogli successivi inserendo il numero
+ progressivo; la lista ä scorrevole tramite i tasti [+] e [-]; il nome puï
+ essere lungo fino a 30 caratteri; gli spazi iniziali e finali vengono
+ tagliati; se invece si vuole scriverlo a mano sul foglio stampato, premere
+ [Enter] senza aver digitato nessun carattere;
+
+ - l'anno in quattro cifre; il programma accetta anni dal 1899 al 4099;
+ premendo [Enter] senza aver digitato un anno, viene considerato l'anno
+ corrente; inserendo 0 si potrÖ terminare o riavviare il programma;
+
+ - il mese in due cifre (da 01 a 12); premendo [Enter] senza aver digitato un
+ numero di mese, viene considerato quello in corso; inserendo 0 si potrÖ
+ terminare o riavviare il programma;
+
+ - il nome della ditta; questo sarÖ aggiunto, se non presente, in una lista
+ (DITTE.OM) come per i nomi/matricola;
+
+ - il nome del file; il programma accetta nomi composti di caratteri numerici
+ (0-9) e lettere (A-Z) fino a otto; (le estensioni sono assegnate
+ automaticamente: .TXT per il file da stampare e .CSV per il file-dati);
+ premendo [Enter] senza aver digitato alcun carattere, al file viene assegnato
+ il nome AAAA-MM (AAAA per l'anno corrente, trattino, MM per il mese corrente);
+ se il nome del file scelto esiste giÖ, il programma lo indicherÖ tramite il
+ DOS (via comando dir) e chiederÖ se continuare per immettere un altro nome di
+ file oppure terminare;
+
+ - gli orari, due entrate e due uscite, in sequenza dal primo all'ultimo giorno
+ del mese (il nome del giorno - lunedç, martedç, ecc. - comparirÖ troncato dopo
+ il numero: p.e. 01 LU); gli orari sono accettati con 4 cifre: due per le ore
+ (dalle 00 alle 23) e due per i minuti (da 01 a 59) fra il separatore (:) che
+ ä visualizzato automaticamente;
+ gli zeri omessi vengono inseriti automaticamente ove possibile (p.e.
+ immettendo 08 viene inserito 08:00);
+ se viene omesso un orario di entrata, non verrÖ chiesto il relativo orario di
+ uscita;
+ se viene omesso un orario di uscita, viene annullato il relativo orario di
+ entrata;
+ gli orari di uscita vengono accettati solo se sono posteriori al relativo
+ orario di entrata;
+ le 24:00 si ottengono esclusivamente come orario di uscita inserendo 00:00;
+ per turni a cavallo della mezzanotte, p.e. dalle 22:00 alle 06:00, immettere
+ l'entrata alle 22:00 con uscita alle 24:00 e, nel giorno successivo, entrata
+ alle 00:00 con uscita alle 06:00; il programma visualizza le ore lavorate
+ giornalmente e il totale mensile.
+
+ Modificare un foglio
+ --------------------
+ Premendo il tasto [M] (modifica) cambia quanto segue rispetto alla creazione
+ di un nuovo foglio:
+
+ - viene presentata la lista dei file presenti e chiesto di immettere il numero
+ progressivo relativo al file da modificare;
+
+ - ä possibile cambiare il proprio nome o numero di matricola e il nome della
+ ditta, oppure lasciare quelli esistenti premendo [Enter] senza aver digitato
+ caratteri;
+
+ - la procedura relativa all'inserimento dei giorni chiederÖ ad uno ad uno
+ quelli da modificare.
+
+ Impostare i tasti funzione
+ --------------------------
+ Premendo il tasto [F] si puï programmare ognuno dei tasti funzione (F1-F12)
+ affinchÇ premerlo corrisponda ad inserire uno o pió orari.
+ I tasti programmati vengono salvati nel file TASTIFN.OM e visualizzati
+ sull'ultima riga del display quando bisogna inserire gli orari.
+ Durante la procedura di impostazione, viene ricordato che i tasti funzione
+ accettano fino a 15 caratteri con Enter inclusi e che perciï ä possibile
+ attribuire a ciascuno fino a due entrate e due uscite omettendo gli zeri (che
+ vengono aggiunti automaticamente dal programma per i file .CSV e .TXT); p.e.
+ per immettere:
+
+ - dalle 08:00 alle 12:00 e dalle 13:00 alle 17:00, digitare:
+
+   8 ed Enter
+   12 ed Enter
+   13 ed Enter
+   17 ed Enter
+
+ - dalle 08:30 alle 12:30 e dalle 13:30 alle 17:30, digitare:
+
+   83 ed Enter
+   123 ed Enter
+   133 ed Enter
+   173 ed Enter
+
+ Digitando soltanto Enter quattro volte consecutive, il tasto funzione viene
+ resettato.
+
+ Durante la digitazione di un orario, premendo [Tab] viene visualizzato un
+ riquadro popup indicante gli orari assegnati ad ogni tasto funzione.
+
+ Impostare i colori
+ ------------------
+ Premendo il tasto [C] in sequenza, viene impostata una combinazione di colori
+ per schermi a colori su sistemi dotati di schede CGA ed EGA o VGA che sarÖ
+ scritta in forma di numero nel file PAL.OM
+
+ 0: testo bianco su sfondo nero
+ 1: testo bianco su sfondo blu
+ 2: testo blu su sfondo bianco
+ 3: testo nero su sfondo verde
+ 4: testo verde su sfondo nero
+ 5: testo nero su sfondo ciano
+ 6: testo ciano su sfondo nero
+ 7: testo bianco su sfondo rosso
+ 8: testo rosso su sfondo bianco
+ 9: testo nero su sfondo magenta
+ 10: testo magenta su sfondo nero
+ 11: testo nero su sfondo giallo
+ 12: testo giallo su sfondo nero
+
+ Su sistemi con monitor monocromatico e/o senza scheda a colori, le suddette
+ combinazioni non hanno effetto (tranne la 0) ma risulteranno visualizzate
+ correttamente comunque le parole in bianco su nero e in nero su bianco, in
+ bianco brillante e quelle lampeggianti sia in bianco che in nero.
+
+ Istruzioni
+ ----------
+ Se il presente file (OM.TXT) ä presente nella medesima directory dei propri
+ fogli, sarÖ visualizzato premendo il tasto [I] e poi i tasti [+] e [-] per
+ scorrerlo avanti e indietro; se non ä presente viene visualizzato un
+ promemoria basilare.
+
+ Note
+ ----
+ Non modificare "manualmente" i file .CSV a meno di non sapere esattamente come
+ farlo; il programma, infatti, li apre verificandone la correttezza
+ relativamente ai campi della prima riga e alla lunghezza del file stesso che
+ deve corrispondere ad un numero di byte compreso entro determinati limiti;
+ qualora il file fosse stato modificato non correttamente, verrÖ visualizzato
+ il messaggio: "Il file non ä valido" e chiesto se terminare o ricominciare.
+
+ Se la lista dei file ä lunga (perchÇ p.e. contenente centinaia di mensilitÖ
+ fra anni lavorati e lavori con molte ditte) e il sistema non ä veloce (p.e. un
+ 8088 con programma e dati su floppy) durante la sua lettura sarÖ visibile la
+ parola "Attendere" seguita da punti consecutivi via via tanti quanti sono i
+ file .CSV che la compongo.
+
+ Se OM.EXE non ä presente in una directory di path, occorre che lo sia in
+ ognuna di quelle dove sono presenti i file da creare/modificare altrimenti il
+ programma in fase di riavvio terminerÖ generando il messaggio "ERRORE 53"
+ (file non trovato).
+
+ OM.EXE ä freeware 1988 by Guerra Marco CP 0191 30100 Venezia (I)
+
+
+ P.S. Nota di aggiornamento
+ OM.EXE gira in DOS e in ambienti Windows a 16 bit (3.x e 9x) senza alcun
+ problema e anche con i recenti sistemi operativi Windows a 32 bit (da NT 3.1
+ del '93, 3.5 del '94, 3.51 del '95, 4.0 del '96 a probabilmente le prossime
+ versioni a 32 bit) ma alcuni programmi (p.e. alcuni antivirus) potrebbero
+ impedirne l'avvio via cmd.exe (ovvero con doppio clic); in questi casi basterÖ
+ avviarlo via command.com: cliccare su start ed esegui, immettere command.com
+ e, nella relativa finestra, i comandi necessari per lanciare il programma
+ (p.e. cd c:\lavoro e OM.EXE).
+ 
